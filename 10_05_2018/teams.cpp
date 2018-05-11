@@ -11,35 +11,28 @@
 #define pul pair<ull,ull>
 #define pl pair<ll,ll>
 #define pi pair<int,int>
-//#define t int t; cin>>t; while(t--)
+#define t int t; cin>>t; while(t--)
 using namespace std;
+const ll EPS=1e-15;
 int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
+int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
+
 
 
 int main()
 {   
-	ios::sync_with_stdio(false);
-	//cin.tie(NULL);cout.tie(NULL);
+	
+	
 
-	ll n,t,k,d;
-	cin>>n>>t>>k>>d;
+	t
+	{
+		int x;
+		cin>>x;
 
-	ll t1=ceil(double(n)/k)*t;
+		int *a=&x;
 
-	ll v1=ceil ( double(n-(d/t)*k) /(2*k));
-
- cout<<"v1 :"<<v1<<"\n";
-
-	ll t2=(d+  v1*t);
-
-
-	cout<<"t1 :"<<t1<<" t2:"<<t2<<endl;
-
-		if(t2<t1)
-			cout<<"YES\n";
-		else
-			cout<<"NO\n";
-    
-
+		*a+=2;
+		cout<<x<<endl;
+	}
     return 0;
 }
