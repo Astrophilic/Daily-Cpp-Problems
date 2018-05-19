@@ -1,0 +1,17 @@
+Agenda Today
+
+Binary Search
+.................
+1. Read and Understand Binary Search on function and trees.
+2. Reduction of problems to binary search problems.
+3. Read wiki articles and solve related problems.
+4. solve problems
+
+Report:
+1. Studied binary search thoroughly did 2 questions .
+2. understood discrete binary search and applications to floating point questions.
+
+Ternary Search
+
+Report:
+will take it up next day.

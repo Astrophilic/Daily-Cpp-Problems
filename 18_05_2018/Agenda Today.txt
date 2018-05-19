@@ -1,0 +1,11 @@
+Agenda Today
+
+Binary Search
+.................
+
+1. solve problems
+
+Ternary Search
+
+1. study and understand ternary on functions which are parabolic in nature.
+
