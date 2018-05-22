@@ -1,0 +1,7 @@
+Agenda Today 
+
+1. Ternary Search
+
+2.Sliding window/Two pointer
+
+3.Graph basic dfs bfs questions
