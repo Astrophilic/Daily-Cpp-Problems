@@ -5,7 +5,15 @@ Binary Search
 
 1. solve problems
 
+Report
+Solved binary search problems and discrete binary search problems and understood how to tackle boundary
+conditions.
+
+
 Ternary Search
 
 1. study and understand ternary on functions which are parabolic in nature.
+
+Report
+yet to study
 
