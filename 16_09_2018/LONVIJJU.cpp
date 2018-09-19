@@ -33,69 +33,68 @@ ll d[M][M];
 ll fun(ll src,ll k)
 {
 
+    if(k==0)
+        return 0;
 
-    if(d[src][k]>0)
+    if(d[src][k]!=-INF)
         return d[src][k];
 
-    if(k==1)
-        return d[src][1]=w[src];
 
+    if(v[src].size()==0)
+    {
+        if(k==1)
+            return d[src][k]=w[src];
 
-    ll c1,c2,c3;
-    c1=c2=c3=110;
+        return d[src][k]=-INF+1;
+    }
+    
+    
 
-    ll leaf=1;
-
-    for(auto child:v[src])
-    {   
-        if(c1==110)
-            c1=child;
-        else if(c2==110)
-            c2=child;
-        else if(c3==110)
-                c3=child;
-
-        leaf=0;
-
-        for(ll i=1;i<=k-1;i++){
-            d[child][i]=fun(child,i);
-           // cout<<"fun with src "<<src<<" and k "<<k<<endl;
-           // cout<<"d["<<child<<"]["<<i<<"]="<<d[child][i]<<endl;
-        }
+    if(v[src].size()==1)
+    {
+        return d[src][k]=w[src]+fun(v[src][0],k-1);
     }
 
-
-    if(leaf)
-        return d[src][k]=-INF;
-
     ll mx=-INF;
+    if(v[src].size()==2)
+    {
+        for (int i = 0; i < k; ++i)
+        {   
+            ll val1=fun(v[src][0],i);
+            if(val1<0)
+                continue;
+            ll val2=fun(v[src][1],k-i-1);
 
-
-    for(ll i=0;i<k;i++)
-        for(ll j=0;j<k;j++)
-        {
-            
-            {   
-                if(i==j&&i==0)
-                    continue;
-                if(i+j==k-1)
-                {   
-                  //  cout<<"d["<<c1<<"]["<<i<<"]="<<d[c1][i]<<endl;
-                  //  cout<<"d["<<c2<<"]["<<j<<"]="<<d[c2][j]<<endl;
-                  //  cout<<"d["<<c3<<"]["<<l<<"]="<<d[c3][l]<<endl;
-                    
-                    mx=max(mx,d[c1][i]+d[c2][j]);
-                 //   cout<<"mx "<<mx<<endl;
-                }
-            }
+            mx=max(mx,val1+val2);
         }
 
+        return d[src][k]=w[src]+mx;
+    }
 
-     d[src][k]=w[src]+mx;
+    if(v[src].size()==3)
+    {
+        ll mx=-INF;
+        for (int i = 0; i < k; ++i)
+        {
+            ll val=fun(v[src][0],i);
 
-   //  cout<<"d["<<src<<"]["<<k<<"]="<<d[src][k]<<endl;
+            ll in=k-i-1;
 
-     return d[src][k];
+            if(val<0)
+                continue;
+
+            for (int j = 0; j <=in; ++j)
+            {
+
+                ll val1=fun(v[src][1],j);
+                if(val1<0)
+                    continue;
+                ll val2=fun(v[src][2],in-j);
+            mx=max(mx,val+val1+val2);    
+            }
+        }
+        return d[src][k]=w[src]+mx;
+    }
 
 
 }
@@ -132,9 +131,10 @@ int main()
         }
 
 
-        for(ll i=1;i<=n;i++)
+        for (int i = 1; i <=n; ++i)
+        {
             cout<<fun(1,i)<<" ";
-        
+        }
         cout<<"\n";
 
      }
