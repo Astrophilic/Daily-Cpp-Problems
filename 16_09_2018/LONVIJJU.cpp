@@ -128,7 +128,7 @@ int main()
             cin>>x;
             v[x].push_back(i);
 
-        }
+        }       
 
 
         for (int i = 1; i <=n; ++i)
