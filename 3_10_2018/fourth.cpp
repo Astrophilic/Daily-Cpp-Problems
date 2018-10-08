@@ -22,45 +22,52 @@ int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
 int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
 
 
+const ll N=1e5+10;
 
 
+ ll d[N][105];
 
-
-
-int get(char c)
-{
-	return int(c-'0');
-}
-
-int isnov(char c)
-{
-	if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
+ll funcr(ll n,ll r,ll M)
+{	
+	if(r>n)
 		return 0;
-	return 1;
+
+	if(r==0 || r==n)
+		return 1;
+
+	if(d[n][r]!=-1)
+		return d[n][r];
+
+	
+	return d[n][r]=( funcr(n-1,r-1,M)%M+funcr(n-1,r,M)%M )%M;
+
 }
+
+
+
 void solve()
 {
-	
-	string s;
-	cin>>s;
+	memset(d,-1,sizeof d);
 
-	ll s1=get(s[0])+get(s[1]);
+	ll tc,M;
 
-	ll s2=get(s[3])+get(s[4]);
-	
-	ll s3=get(s[4])+get(s[5]);
-
-	ll s4=get(s[7])+get(s[8]);
-
-	if(s1%2==0 && s2%2==0 && s3%2==0 && s4%2==0 && isnovow(s[2]))
+	cin>>tc>>M;
+	while(tc--)
 	{
-		cout<<"valid";
-	}
-	else
-		cout<<"invalid";
 
+		ll n
+		cin>>n;
+
+
+	}
 
 	
+
+	ans-=subtract;
+	if(ans>=M)
+		ans-=M;
+
+	cout<<ans<<"\n";
 }
 int main()
 {   

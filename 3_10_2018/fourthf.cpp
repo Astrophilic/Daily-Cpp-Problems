@@ -3,7 +3,7 @@
 #define ss second
 #define pb push_back
 #define mp make_pair
-#define ll long long
+//#define ll long long
 #define ull unsigned long long
 #define all(a) a.begin(),a.end()
 #define BitCnt(a) __builtin_popcountll(a)
@@ -22,44 +22,65 @@ int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
 int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
 
 
+#define ll long
 
+const ll M=5e6+5;
+ll mod;
+ll fac[M];
 
+void facx()
+{	
+	
+	fac[0]=1;
+	fac[1]=1;
+	fac[2]=1;
 
+	for(ll i=3;i<M-4;i++)
+	{
+		fac[i]=i*fac[i-1];
 
+		if(fac[i]>=mod)
+			fac[i]%=mod;
+	}
 
-int get(char c)
-{
-	return int(c-'0');
 }
 
-int isnov(char c)
-{
-	if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
-		return 0;
-	return 1;
-}
+
+
+
+
 void solve()
 {
 	
-	string s;
-	cin>>s;
-
-	ll s1=get(s[0])+get(s[1]);
-
-	ll s2=get(s[3])+get(s[4]);
-	
-	ll s3=get(s[4])+get(s[5]);
-
-	ll s4=get(s[7])+get(s[8]);
-
-	if(s1%2==0 && s2%2==0 && s3%2==0 && s4%2==0 && isnovow(s[2]))
+	ll tc;
+	cin>>tc>>mod;
+	facx();
+	while(tc--)
 	{
-		cout<<"valid";
+		ll n;
+		cin>>n;	
+
+		if(n<=2)
+		{
+			cout<<0<<" ";
+			continue;
+		}
+		if(n==3)
+		{
+			ll ans=9%mod;
+			cout<<ans<<" ";
+			continue;
+
+		}
+		
+		ll v1=((n*n)%mod *( fac[n-1]))%mod;
+
+		ll v2=(2*(fac[n-1])-1+mod)%mod;
+
+		ll ans=(v1*v2)%mod;
+
+		cout<<ans<<" ";
 	}
-	else
-		cout<<"invalid";
-
-
 	
 }
 int main()

@@ -22,45 +22,60 @@ int toInt(string s)  { int sm; stringstream ss(s); ss>>sm; return sm; }
 int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
 
 
+const ll N=1e5+10;
+const ll M=1e9+7;
+
+ ll d[N][105];
 
 
 
 
+std::vector<ll> v[N];
+const ll inf=1e18;
 
-int get(char c)
+ll k,n;
+
+ll fun(ll s,ll x)
 {
-	return int(c-'0');
+		if(x==k)
+			return 1;
+
+	if(d[s][x]!=-1)
+		return d[s][x];
+		
+		d[s][x]=0;
+		
+		for(auto child:v[s])
+		{   
+		    
+		    d[s][x]+=fun(child,x+1)+fun(child,x);
+		}
+    
+    return d[s][x];
+
+
 }
 
-int isnov(char c)
-{
-	if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
-		return 0;
-	return 1;
-}
+
 void solve()
 {
+	memset(d,-1,sizeof d);
 	
-	string s;
-	cin>>s;
-
-	ll s1=get(s[0])+get(s[1]);
-
-	ll s2=get(s[3])+get(s[4]);
 	
-	ll s3=get(s[4])+get(s[5]);
+	cin>>n>>k;
 
-	ll s4=get(s[7])+get(s[8]);
-
-	if(s1%2==0 && s2%2==0 && s3%2==0 && s4%2==0 && isnovow(s[2]))
+	for(ll i=2;i<=n;i++)
 	{
-		cout<<"valid";
+		ll x;
+		cin>>x;
+		v[x].push_back(i);
+
+
 	}
-	else
-		cout<<"invalid";
-
-
 	
+	ll ans=fun(1,0)+fun(1,1);
+
+	cout<<ans<<"\n";
 }
 int main()
 {   

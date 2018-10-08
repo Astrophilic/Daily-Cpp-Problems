@@ -27,39 +27,33 @@ int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
 
 
 
-int get(char c)
-{
-	return int(c-'0');
-}
 
-int isnov(char c)
-{
-	if(c=='A'||c=='E'||c=='I'||c=='O'||c=='U')
-		return 0;
-	return 1;
-}
 void solve()
 {
 	
-	string s;
-	cin>>s;
+	ll n,q;
+	cin>>n>>q;
 
-	ll s1=get(s[0])+get(s[1]);
-
-	ll s2=get(s[3])+get(s[4]);
-	
-	ll s3=get(s[4])+get(s[5]);
-
-	ll s4=get(s[7])+get(s[8]);
-
-	if(s1%2==0 && s2%2==0 && s3%2==0 && s4%2==0 && isnovow(s[2]))
+	while(n--)
 	{
-		cout<<"valid";
+		ll x,y,r;
+		cin>>x>>y>>r;
+
+
+		ll cnt=0;
+
+		for(ll i=-r;i<=r;i++)
+		{
+			ld j=sqrt(r*r-i*i);
+			if(floor(j)==j)
+			{
+				cout<<i<<" "<<j<<" is integral point on circle\n";
+				cnt++;
+			}
+			
+		}
+		cout<<"count of such "<<cnt<<endl;
 	}
-	else
-		cout<<"invalid";
-
-
 	
 }
 int main()
