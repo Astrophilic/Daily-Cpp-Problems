@@ -1,0 +1,14 @@
+			SELECTION SORT
+
+It is in place sorting algorithm.
+
+divides list into two parts:-
+sorted sublist
+unsorted sublist
+
+find minimum and swap it with ith index.
+Selection sort can also be used on list structures that make add and remove efficient, such as a linked list
+
+in selection sort , number of comparisons is more as compared to insertion sort.
+
+we have to do sigma j operations/comparisons to find minimum element.
