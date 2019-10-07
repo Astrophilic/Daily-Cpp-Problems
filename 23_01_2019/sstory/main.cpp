@@ -130,7 +130,9 @@ int main()
 {
 
 
-
+    ios::sync_with_stdio(0);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
     {
 
     cin>>a>>b;
@@ -147,6 +149,8 @@ int main()
 
         hash_a[i]={hash_value1,hash_value2};
     }
+
+
 
 
 
