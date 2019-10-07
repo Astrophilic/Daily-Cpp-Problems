@@ -29,41 +29,17 @@ int dcmp(double x, double y) {  return fabs(x-y) <= EPS ? 0 : x < y ? -1 : 1; }
 
 const ll N=2010;
 
-ll d[N][N];
 
 
 
-
-
-ld modexe(ld x,ll n)
-{
-	if(n==0)
-		return 1;
-
-	if(n%2)
-		return x*modexe(x*x,n/2);
-	return modexe(x*x,n/2);
-
-}
 void solve()
 {
 	
-	for(ll i=0;i<N;i++)
-		d[i][0]=1;
-
-	for(ll i=1;i<N;i++)
-		{for(ll j=1;j<=i;j++)
-		{
-			d[i][j]=d[i-1][j-1]+d[i-1][j];
-		
-
-		}
-		}
+	
 
 	ll n,t;
 	ld p;
 	cin>>n>>p>>t;
-	cout<<(modexe(.5,2))<<"\n";
 	ld expp=0;
 
 	ld dp[N][N];
@@ -76,7 +52,7 @@ void solve()
 	dp[0][1]=1;
 	d[0][0]=1;
 	ld an=0;
-	
+
 	for(ll i=0;i<=t;i++)
 	{
 
@@ -95,7 +71,7 @@ void solve()
 	for(ll j=0;j<=n;j++)
 		an+=j*dp[t][j];
 
-	cout<<an<<"\n";
+	cout<<fixed<<setprecan<<"\n";
 
 
 
